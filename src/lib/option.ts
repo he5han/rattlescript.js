@@ -1,10 +1,10 @@
 import { Option as IOption, Connection } from "../core";
 import { Address } from "./address";
 import { Message } from "./message";
-import { Deferred, defer, Promise } from "q";
+import Q, { Deferred, Promise } from "q";
 import { ReplayableMessage } from "./replyable";
 
-export class Option<T> implements IOption<Message<T>> {
+export abstract class Option<T> implements IOption<Message<T>> {
 	address: Address;
 	connection: Connection<Message<T>, ReplayableMessage<T>>;
 	protected deferred?: Deferred<any>;
@@ -17,10 +17,10 @@ export class Option<T> implements IOption<Message<T>> {
 		connection.listen(this.onMessage);
 	}
 
-	onMessage(message: ReplayableMessage<T>) {}
+	abstract onMessage(message: ReplayableMessage<T>) : void
 
 	request(target: Address, b?: any): Promise<Message<T>> {
-		this.deferred = defer();
+		this.deferred = Q.defer();
 		this.connection.add(new Message(target, this.address, b));
 		return this.deferred.promise;
 	}

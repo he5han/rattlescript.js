@@ -6,20 +6,13 @@ import { ReplayableMessage } from "./replyable";
  * [T]: native signal type
  * Usually string
  */
-export class Connection<T>
+export abstract class Connection<T>
 	implements IConnection<Message<T>, ReplayableMessage<T>> {
+	abstract listen(onMessage: onMessageCallback<ReplayableMessage<T>>): any;
 
-    listen(onMessage: onMessageCallback<ReplayableMessage<T>>) {
-        console.dir(onMessage)
-    }
-    
-    add(message: Message<T>) {
-        console.dir(message)
-    }
-    
-	onError(error: any) {
-        console.error(error)
-    }
-    
-    stop() {}
+	abstract add(message: Message<T>): void;
+
+	abstract onError(error: any): void;
+
+	abstract stop(): void;
 }

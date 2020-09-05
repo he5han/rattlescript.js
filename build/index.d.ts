@@ -1,5 +1,5 @@
-interface Message {
-    m: string;
-}
-export declare const print: (message: Message) => void;
-export {};
+/**
+ * Websocket Helpers
+ */
+export { WsConnection } from "./ws/connection";
+export { WsRemoteOption } from "./ws/option";
