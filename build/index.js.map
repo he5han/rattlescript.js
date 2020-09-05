@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sources":["../src/index.ts"],"sourcesContent":["interface Message {\n    m: string\n}\n\nexport const print = (message: Message) => console.log(message.m)"],"names":[],"mappings":";;;;IAIa,KAAK,GAAG,UAAC,OAAgB,IAAK,OAAA,OAAO,CAAC,GAAG,CAAC,OAAO,CAAC,CAAC,CAAC;;;;"}
