@@ -1,9 +1,8 @@
-import { WsConnection } from "./connection";
 import { Option, Address, ReplayableMessage } from '../lib'
 
 export class WsRemoteOption extends Option<string> {
-	constructor(address: Address, connection: WsConnection) {
-		super(address, connection)
+	constructor(address: Address) {
+		super(address)
 	}
 
 	onMessage(message: ReplayableMessage<string>){

@@ -101,10 +101,16 @@ var ReplayableMessage = /** @class */ (function (_super) {
 }(Message));
 
 var Option = /** @class */ (function () {
-    function Option(address, connection) {
+    function Option(address) {
         this.address = address;
-        connection.listen(this.onMessage);
     }
+    Option.prototype.start = function (connection) {
+        this.connection = connection;
+        this.connection.listen(this.onMessage);
+    };
+    Option.prototype.dispose = function () {
+        this.connection.stop();
+    };
     Option.prototype.request = function (target, b) {
         this.deferred = Q.defer();
         this.connection.add(new Message(target, this.address, b));
@@ -159,8 +165,8 @@ var WsConnection = /** @class */ (function (_super) {
 
 var WsRemoteOption = /** @class */ (function (_super) {
     __extends(WsRemoteOption, _super);
-    function WsRemoteOption(address, connection) {
-        return _super.call(this, address, connection) || this;
+    function WsRemoteOption(address) {
+        return _super.call(this, address) || this;
     }
     WsRemoteOption.prototype.onMessage = function (message) {
         if (message.target.is(this.address))

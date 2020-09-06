@@ -9,15 +9,20 @@ export abstract class Option<T> implements IOption<Message<T>> {
 	connection: Connection<Message<T>, ReplayableMessage<T>>;
 	protected deferred?: Deferred<any>;
 
-	constructor(
-		address: Address,
-		connection: Connection<Message<T>, ReplayableMessage<T>>
-	) {
+	constructor(address: Address) {
 		this.address = address;
-		connection.listen(this.onMessage);
 	}
 
-	abstract onMessage(message: ReplayableMessage<T>) : void
+	start(connection: Connection<Message<T>, ReplayableMessage<T>>) {
+		this.connection = connection;
+		this.connection.listen(this.onMessage);
+	}
+
+	dispose(){
+		this.connection.stop();
+	}
+
+	abstract onMessage(message: ReplayableMessage<T>): void;
 
 	request(target: Address, b?: any): Promise<Message<T>> {
 		this.deferred = Q.defer();
