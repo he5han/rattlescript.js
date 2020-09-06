@@ -27,8 +27,8 @@
 	],
 	"author": "Heshan Wijesinghe <heshanto@gmail.com>",
 	"license": "ISC",
-	"peerDependencies": {
-		"q": "^1.5.1",
-		"rxjs": "^6.6.2"
-	}
+	// "peerDependencies": {
+	// 	"q": "^1.5.1",
+	// 	"rxjs": "^6.6.2"
+	// }
 }
