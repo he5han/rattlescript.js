@@ -49,7 +49,7 @@ var Message = /** @class */ (function () {
     };
     Message.fromString = function (value) {
         var _splited = value.split("::");
-        return new Message(Address.fromString(_splited[0]), Address.fromString(_splited[1]), _splited[3]);
+        return new Message(Address.fromString(_splited[0]), Address.fromString(_splited[1]), _splited[2]);
     };
     return Message;
 }());

@@ -21,7 +21,7 @@ export class Message<T> implements IMessage<T> {
 		return new Message(
 			Address.fromString(_splited[0]),
 			Address.fromString(_splited[1]),
-			_splited[3]
+			_splited[2]
 		);
 	}
 }
