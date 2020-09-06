@@ -1,5 +1,5 @@
 {
-	"name": "remote",
+	"name": "facejs",
 	"version": "1.0.0",
 	"description": "messaging schema and js tools ",
 	"main": "build/index.js",
