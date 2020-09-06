@@ -1,3 +1,8 @@
+import * as face from "./lib";
+/**
+ * Default lib
+ */
+export default face;
 /**
  * Websocket Helpers
  */

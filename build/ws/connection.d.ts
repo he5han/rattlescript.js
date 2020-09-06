@@ -1,7 +1,7 @@
 import { StirngReplayableMessage, StringMessage } from "./message";
 import { WebSocketSubject, WebSocketSubjectConfig } from "rxjs/webSocket";
 import { Subscription } from "rxjs/internal/Subscription";
-import { Connection } from "../lib/connection";
+import { Connection } from "../lib";
 declare type onMessageCallback = (message: StirngReplayableMessage) => void;
 export declare class WsConnection extends Connection<string> {
     connection: WebSocketSubject<string>;

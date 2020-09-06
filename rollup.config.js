@@ -21,6 +21,7 @@ module.exports = {
       sourcemap: true
     }
   ],
+  external: [ 'rxjs', 'rxjs/webSocket', 'rxjs/internal/Subscription' , 'q'],
   plugins: [
     external(),
     resolve(),
