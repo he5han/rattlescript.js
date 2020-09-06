@@ -1,6 +1,6 @@
 {
 	"name": "facejs",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"description": "messaging schema and js tools ",
 	"main": "build/index.js",
 	"module": "build/index.es.js",
