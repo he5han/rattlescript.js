@@ -36,7 +36,7 @@ export interface Connection<T, S> {
 }
 
 export interface Option<T> {
-	address: Address;
+	domain: string;
 	onMessage: (message: T) => void;
 	request: (target: Address, body?: any) => any;
 }

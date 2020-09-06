@@ -109,8 +109,8 @@ var ReplayableMessage = /** @class */ (function (_super) {
 }(Message));
 
 var Option = /** @class */ (function () {
-    function Option(address) {
-        this.address = address;
+    function Option(domain) {
+        this.domain = domain;
     }
     Option.prototype.start = function (connection) {
         this.connection = connection;
@@ -119,9 +119,13 @@ var Option = /** @class */ (function () {
     Option.prototype.dispose = function () {
         this.connection.stop();
     };
+    Option.prototype.onMessage = function (message) {
+        if (message.target.domain === this.domain)
+            this.deferred && this.deferred.resolve(message);
+    };
     Option.prototype.request = function (target, b) {
         this.deferred = Q__default['default'].defer();
-        this.connection.add(new Message(target, this.address, b));
+        this.connection.add(new Message(target, Address.fromString(this.domain + "..*"), b));
         return this.deferred.promise;
     };
     return Option;
@@ -173,13 +177,9 @@ var WsConnection = /** @class */ (function (_super) {
 
 var WsRemoteOption = /** @class */ (function (_super) {
     __extends(WsRemoteOption, _super);
-    function WsRemoteOption(address) {
-        return _super.call(this, address) || this;
+    function WsRemoteOption(domain) {
+        return _super.call(this, domain) || this;
     }
-    WsRemoteOption.prototype.onMessage = function (message) {
-        if (message.target.is(this.address))
-            this.deferred && this.deferred.resolve(message);
-    };
     return WsRemoteOption;
 }(Option));
 

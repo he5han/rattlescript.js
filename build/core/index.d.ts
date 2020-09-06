@@ -28,7 +28,7 @@ export interface Connection<T, S> {
     add: (message: T) => void;
 }
 export interface Option<T> {
-    address: Address;
+    domain: string;
     onMessage: (message: T) => void;
     request: (target: Address, body?: any) => any;
 }

@@ -5,12 +5,12 @@ import Q, { Deferred, Promise } from "q";
 import { ReplayableMessage } from "./replyable";
 
 export abstract class Option<T> implements IOption<Message<T>> {
-	address: Address;
+	domain: string;
 	connection: Connection<Message<T>, ReplayableMessage<T>>;
 	protected deferred?: Deferred<any>;
 
-	constructor(address: Address) {
-		this.address = address;
+	constructor(domain: string) {
+		this.domain = domain;
 	}
 
 	start(connection: Connection<Message<T>, ReplayableMessage<T>>) {
@@ -18,15 +18,20 @@ export abstract class Option<T> implements IOption<Message<T>> {
 		this.connection.listen(this.onMessage);
 	}
 
-	dispose(){
+	dispose() {
 		this.connection.stop();
 	}
 
-	abstract onMessage(message: ReplayableMessage<T>): void;
+	onMessage(message: ReplayableMessage<T>) {
+		if (message.target.domain === this.domain)
+			this.deferred && this.deferred.resolve(message);
+	}
 
 	request(target: Address, b?: any): Promise<Message<T>> {
 		this.deferred = Q.defer();
-		this.connection.add(new Message(target, this.address, b));
+		this.connection.add(
+			new Message(target, Address.fromString(`${this.domain}..*`), b)
+		);
 		return this.deferred.promise;
 	}
 }

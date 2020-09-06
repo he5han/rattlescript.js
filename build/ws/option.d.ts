@@ -1,5 +1,4 @@
-import { Option, Address, ReplayableMessage } from '../lib';
+import { Option } from '../lib';
 export declare class WsRemoteOption extends Option<string> {
-    constructor(address: Address);
-    onMessage(message: ReplayableMessage<string>): void;
+    constructor(domain: string);
 }
