@@ -4,7 +4,7 @@ import { Message } from "./message";
 import Q, { Deferred, Promise } from "q";
 import { ReplayableMessage } from "./replyable";
 
-export abstract class Option<T> implements IOption<Message<T>> {
+export abstract class Option<T> implements IOption<ReplayableMessage<T>> {
 	domain: string;
 	connection: Connection<Message<T>, ReplayableMessage<T>>;
 	protected deferred?: Deferred<any>;
