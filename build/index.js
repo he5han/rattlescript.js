@@ -114,7 +114,7 @@ var Option = /** @class */ (function () {
     }
     Option.prototype.start = function (connection) {
         this.connection = connection;
-        this.connection.listen(this.onMessage);
+        this.connection.listen(this.onMessage.bind(this));
     };
     Option.prototype.dispose = function () {
         this.connection.stop();

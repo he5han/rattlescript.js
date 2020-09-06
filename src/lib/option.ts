@@ -15,7 +15,7 @@ export abstract class Option<T> implements IOption<ReplayableMessage<T>> {
 
 	start(connection: Connection<Message<T>, ReplayableMessage<T>>) {
 		this.connection = connection;
-		this.connection.listen(this.onMessage);
+		this.connection.listen(this.onMessage.bind(this));
 	}
 
 	dispose() {
