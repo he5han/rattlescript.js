@@ -5,9 +5,7 @@ import {
 	WebSocketSubjectConfig
 } from "rxjs/webSocket";
 import { Subscription } from "rxjs/internal/Subscription";
-import { Message } from "../lib/message";
-import { Connection } from "../lib/connection"
-import { ReplayableMessage } from "../lib/replyable";
+import { Message, Connection, ReplayableMessage } from "../lib";
 
 type onMessageCallback = (message: StirngReplayableMessage) => void;
 
@@ -29,9 +27,10 @@ const stringToWsReplyableMessage = (
 // 	deserializer: ({ data }) => data
 // }
 
-export class WsConnection implements Connection<string> {
+export class WsConnection extends Connection<string> {
 	connection: WebSocketSubject<string>;
 	constructor(config: WebSocketSubjectConfig<string>) {
+		super();
 		this.connection = webSocket(config);
 	}
 

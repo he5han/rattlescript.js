@@ -1,5 +1,4 @@
-import { Message } from "../lib/message";
-import { ReplayableMessage } from '../lib/replyable'
+import { Message, ReplayableMessage } from '../lib'
 
 export type StringMessage = Message<string>
 

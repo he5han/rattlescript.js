@@ -5,9 +5,9 @@ import { ReplayableMessage } from "./replyable";
  * [T]: native signal type
  * Usually string
  */
-export declare class Connection<T> implements IConnection<Message<T>, ReplayableMessage<T>> {
-    listen(onMessage: onMessageCallback<ReplayableMessage<T>>): void;
-    add(message: Message<T>): void;
-    onError(error: any): void;
-    stop(): void;
+export declare abstract class Connection<T> implements IConnection<Message<T>, ReplayableMessage<T>> {
+    abstract listen(onMessage: onMessageCallback<ReplayableMessage<T>>): any;
+    abstract add(message: Message<T>): void;
+    abstract onError(error: any): void;
+    abstract stop(): void;
 }

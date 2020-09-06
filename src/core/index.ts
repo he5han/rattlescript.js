@@ -22,11 +22,6 @@ export interface ReplayableMessage<T> extends Message<T> {
 
 ///
 
-// export type MessageListener<T> = (
-// 	onMessage: (message: T) => void,
-// 	onError: (error: any) => void
-// ) => void;
-
 export type onMessageCallback<T> = (message: T) => void;
 
 /**

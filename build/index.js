@@ -21,12 +21,41 @@ PERFORMANCE OF THIS SOFTWARE.
 var extendStatics = function(d, b) {
     extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
     return extendStatics(d, b);
 };
 
 function __extends(d, b) {
     extendStatics(d, b);
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+/* global Reflect, Promise */
+
+var extendStatics$1 = function(d, b) {
+    extendStatics$1 = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return extendStatics$1(d, b);
+};
+
+function __extends$1(d, b) {
+    extendStatics$1(d, b);
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 }
@@ -250,7 +279,7 @@ var rxSubscriber = /*@__PURE__*/ (function () {
 
 /** PURE_IMPORTS_START tslib,_util_isFunction,_Observer,_Subscription,_internal_symbol_rxSubscriber,_config,_util_hostReportError PURE_IMPORTS_END */
 var Subscriber = /*@__PURE__*/ (function (_super) {
-    __extends(Subscriber, _super);
+    __extends$1(Subscriber, _super);
     function Subscriber(destinationOrNext, error, complete) {
         var _this = _super.call(this) || this;
         _this.syncErrorValue = null;
@@ -338,7 +367,7 @@ var Subscriber = /*@__PURE__*/ (function (_super) {
     return Subscriber;
 }(Subscription));
 var SafeSubscriber = /*@__PURE__*/ (function (_super) {
-    __extends(SafeSubscriber, _super);
+    __extends$1(SafeSubscriber, _super);
     function SafeSubscriber(_parentSubscriber, observerOrNext, error, complete) {
         var _this = _super.call(this) || this;
         _this._parentSubscriber = _parentSubscriber;
@@ -651,7 +680,7 @@ var ObjectUnsubscribedError = ObjectUnsubscribedErrorImpl;
 
 /** PURE_IMPORTS_START tslib,_Subscription PURE_IMPORTS_END */
 var SubjectSubscription = /*@__PURE__*/ (function (_super) {
-    __extends(SubjectSubscription, _super);
+    __extends$1(SubjectSubscription, _super);
     function SubjectSubscription(subject, subscriber) {
         var _this = _super.call(this) || this;
         _this.subject = subject;
@@ -680,7 +709,7 @@ var SubjectSubscription = /*@__PURE__*/ (function (_super) {
 
 /** PURE_IMPORTS_START tslib,_Observable,_Subscriber,_Subscription,_util_ObjectUnsubscribedError,_SubjectSubscription,_internal_symbol_rxSubscriber PURE_IMPORTS_END */
 var SubjectSubscriber = /*@__PURE__*/ (function (_super) {
-    __extends(SubjectSubscriber, _super);
+    __extends$1(SubjectSubscriber, _super);
     function SubjectSubscriber(destination) {
         var _this = _super.call(this, destination) || this;
         _this.destination = destination;
@@ -689,7 +718,7 @@ var SubjectSubscriber = /*@__PURE__*/ (function (_super) {
     return SubjectSubscriber;
 }(Subscriber));
 var Subject = /*@__PURE__*/ (function (_super) {
-    __extends(Subject, _super);
+    __extends$1(Subject, _super);
     function Subject() {
         var _this = _super.call(this) || this;
         _this.observers = [];
@@ -789,7 +818,7 @@ var Subject = /*@__PURE__*/ (function (_super) {
     return Subject;
 }(Observable));
 var AnonymousSubject = /*@__PURE__*/ (function (_super) {
-    __extends(AnonymousSubject, _super);
+    __extends$1(AnonymousSubject, _super);
     function AnonymousSubject(destination, source) {
         var _this = _super.call(this) || this;
         _this.destination = destination;
@@ -828,7 +857,7 @@ var AnonymousSubject = /*@__PURE__*/ (function (_super) {
 
 /** PURE_IMPORTS_START tslib,_Subscription PURE_IMPORTS_END */
 var Action = /*@__PURE__*/ (function (_super) {
-    __extends(Action, _super);
+    __extends$1(Action, _super);
     function Action(scheduler, work) {
         return _super.call(this) || this;
     }
@@ -840,7 +869,7 @@ var Action = /*@__PURE__*/ (function (_super) {
 
 /** PURE_IMPORTS_START tslib,_Action PURE_IMPORTS_END */
 var AsyncAction = /*@__PURE__*/ (function (_super) {
-    __extends(AsyncAction, _super);
+    __extends$1(AsyncAction, _super);
     function AsyncAction(scheduler, work) {
         var _this = _super.call(this, scheduler, work) || this;
         _this.scheduler = scheduler;
@@ -932,7 +961,7 @@ var AsyncAction = /*@__PURE__*/ (function (_super) {
 
 /** PURE_IMPORTS_START tslib,_AsyncAction PURE_IMPORTS_END */
 var QueueAction = /*@__PURE__*/ (function (_super) {
-    __extends(QueueAction, _super);
+    __extends$1(QueueAction, _super);
     function QueueAction(scheduler, work) {
         var _this = _super.call(this, scheduler, work) || this;
         _this.scheduler = scheduler;
@@ -988,7 +1017,7 @@ var Scheduler = /*@__PURE__*/ (function () {
 
 /** PURE_IMPORTS_START tslib,_Scheduler PURE_IMPORTS_END */
 var AsyncScheduler = /*@__PURE__*/ (function (_super) {
-    __extends(AsyncScheduler, _super);
+    __extends$1(AsyncScheduler, _super);
     function AsyncScheduler(SchedulerAction, now) {
         if (now === void 0) {
             now = Scheduler.now;
@@ -1043,7 +1072,7 @@ var AsyncScheduler = /*@__PURE__*/ (function (_super) {
 
 /** PURE_IMPORTS_START tslib,_AsyncScheduler PURE_IMPORTS_END */
 var QueueScheduler = /*@__PURE__*/ (function (_super) {
-    __extends(QueueScheduler, _super);
+    __extends$1(QueueScheduler, _super);
     function QueueScheduler() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
@@ -1205,7 +1234,7 @@ var Notification = /*@__PURE__*/ (function () {
 
 /** PURE_IMPORTS_START tslib,_Subscriber,_Notification PURE_IMPORTS_END */
 var ObserveOnSubscriber = /*@__PURE__*/ (function (_super) {
-    __extends(ObserveOnSubscriber, _super);
+    __extends$1(ObserveOnSubscriber, _super);
     function ObserveOnSubscriber(destination, scheduler, delay) {
         if (delay === void 0) {
             delay = 0;
@@ -1247,7 +1276,7 @@ var ObserveOnMessage = /*@__PURE__*/ (function () {
 
 /** PURE_IMPORTS_START tslib,_Subject,_scheduler_queue,_Subscription,_operators_observeOn,_util_ObjectUnsubscribedError,_SubjectSubscription PURE_IMPORTS_END */
 var ReplaySubject = /*@__PURE__*/ (function (_super) {
-    __extends(ReplaySubject, _super);
+    __extends$1(ReplaySubject, _super);
     function ReplaySubject(bufferSize, windowTime, scheduler) {
         if (bufferSize === void 0) {
             bufferSize = Number.POSITIVE_INFINITY;
@@ -1362,7 +1391,7 @@ var DEFAULT_WEBSOCKET_CONFIG = {
 };
 var WEBSOCKETSUBJECT_INVALID_ERROR_OBJECT = 'WebSocketSubject.error must be called with an object with an error code, and an optional reason: { code: number, reason: string }';
 var WebSocketSubject = /*@__PURE__*/ (function (_super) {
-    __extends(WebSocketSubject, _super);
+    __extends$1(WebSocketSubject, _super);
     function WebSocketSubject(urlConfigOrSource, destination) {
         var _this = _super.call(this) || this;
         if (urlConfigOrSource instanceof Observable) {
@@ -1604,34 +1633,15 @@ var Message = /** @class */ (function () {
     return Message;
 }());
 
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
-/* global Reflect, Promise */
-
-var extendStatics$1 = function(d, b) {
-    extendStatics$1 = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-    return extendStatics$1(d, b);
-};
-
-function __extends$1(d, b) {
-    extendStatics$1(d, b);
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-}
+/**
+ * [T]: native signal type
+ * Usually string
+ */
+var Connection = /** @class */ (function () {
+    function Connection() {
+    }
+    return Connection;
+}());
 
 var Reply = /** @class */ (function () {
     function Reply(connection, message) {
@@ -1646,7 +1656,7 @@ var Reply = /** @class */ (function () {
 }());
 
 var ReplayableMessage = /** @class */ (function (_super) {
-    __extends$1(ReplayableMessage, _super);
+    __extends(ReplayableMessage, _super);
     function ReplayableMessage(connection, target, source, body) {
         var _this = _super.call(this, target, source, body) || this;
         _this.reply = new Reply(connection, _this);
@@ -1669,9 +1679,12 @@ var stringToWsReplyableMessage = function (value, connection) {
 // 	serializer: (data: any) => data,
 // 	deserializer: ({ data }) => data
 // }
-var WsConnection = /** @class */ (function () {
+var WsConnection = /** @class */ (function (_super) {
+    __extends(WsConnection, _super);
     function WsConnection(config) {
-        this.connection = webSocket(config);
+        var _this = _super.call(this) || this;
+        _this.connection = webSocket(config);
+        return _this;
     }
     WsConnection.prototype.stop = function () {
         this.connection.complete();
@@ -1687,7 +1700,7 @@ var WsConnection = /** @class */ (function () {
         this.connection.next(Message.toString(message));
     };
     return WsConnection;
-}());
+}(Connection));
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
@@ -3744,9 +3757,6 @@ var Option = /** @class */ (function () {
         this.address = address;
         connection.listen(this.onMessage);
     }
-    Option.prototype.onMessage = function (message) {
-        console.dir(message);
-    };
     Option.prototype.request = function (target, b) {
         this.deferred = q.defer();
         this.connection.add(new Message(target, this.address, b));
@@ -3756,7 +3766,7 @@ var Option = /** @class */ (function () {
 }());
 
 var WsRemoteOption = /** @class */ (function (_super) {
-    __extends$1(WsRemoteOption, _super);
+    __extends(WsRemoteOption, _super);
     function WsRemoteOption(address, connection) {
         return _super.call(this, address, connection) || this;
     }
